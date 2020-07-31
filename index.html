@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>국밥계산기 - 이 돈이면 국밥이 몇 그릇이냐</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="C:\Users\김민석\Desktop\guk bab\style.css">
+  <script>
+    function calc() {
+      var n1 = document.getElementById('n1').value;
+
+      if (n1 < 6000) {
+        document.getElementById('result').value = '이런! 이 돈으로는 맛있는 국밥을 먹을 수 없어요';
+      }
+      else if (n1 >= 6000) {
+        var num = Math.floor(n1/6000);
+
+        if (num >= 1000000000000) {
+          var num1 = Math.floor(num/1000000000000);
+          var num2 = Math.floor((num - num1*1000000000000)/100000000);
+          var num3 = Math.floor((num - num1*1000000000000 - num2*100000000)/10000);
+          var num4 = num - num1*1000000000000 - num2*100000000 - num3*10000;
+
+          var result = num1 + '조 ' + num2 + '억 ' + num3 + '만 ' + num4;
+        }
+        else if (num >= 100000000) {
+          var num1 = Math.floor(num/100000000);
+          var num2 = Math.floor((num - num1*100000000)/10000);
+          var num3 = num - num1*100000000 - num2*10000;
+
+          var result = num1 + '억 ' + num2 + '만 ' + num3;
+        }
+        else if (num >= 10000) {
+          var num1 = Math.floor(num/10000);
+          var num2 = num - num1*10000;
+
+          var result = num1 + '만 ' + num2;
+        }
+        else {
+          var result = num;
+        }
+      document.getElementById('result').value = result;
+    }
+  }
+  </script>
+</head>
+<body>
+  <center>
+    <dev id="title">
+      <h1>국밥계산기</h1>
+      <h3>- 이 돈이면 국밥이 몇 그릇이냐 -</h3>
+    </dev>
+
+    <img src="C:\Users\김민석\Desktop\guk bab\국밥명언.jpg" width="500" height="auto">
+
+    <dev id="ex">
+      <p>
+        <strong>※ 1G(국밥) = 6000₩(원) 입니다 ※</strong>
+      </p>
+    </dev>
+
+      <dev id="main">
+        <p>가격 : <input type="number" id="n1">￦</p>
+        <p><input type="button" value="변환" onclick="calc();"></p>
+        <p><input type="text" id="result"> G(국밥)</p>
+      </dev>
+
+    <dev id="recommend">
+      <p>※ 추천 검색어 ※</p>
+      <p></p>
+    </dev>
+
+    <dev id="end">
+      <p>
+        제작 : C코드 / 이메일(국밥 시세 변경 되면 연락 주세요) : ccode8372@gmail.com / <a href="https://www.youtube.com/channel/UCTXJheUWk5WFCChYpKzCEjQ?view_as=subscriber">제작자 유튜브 바로가기</a>
+      </p>
+    </dev>
+  </center>
+</body>
+</html>
